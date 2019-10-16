@@ -49,6 +49,7 @@ public class CameraPreviewActivity extends AppCompatActivity {
 
     private void startCamera() {
         GData.setIsCamera(true);
+
         if (mCameraView == null) {
             mCameraView = new CameraView(this);
             mContainer.addView(mCameraView,

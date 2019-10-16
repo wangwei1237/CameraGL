@@ -50,6 +50,8 @@ public class VideoPreviewActivity extends AppCompatActivity {
 
     private void startCamera() {
         GData.setIsCamera(false);
+        GData.setIsMediaCodec(false);
+
         if (mCameraView == null) {
             mCameraView = new CameraView(this);
             mContainer.addView(mCameraView,

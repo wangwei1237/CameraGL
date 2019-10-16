@@ -1,11 +1,9 @@
 package com.wangwei.cameragl.activity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +12,7 @@ import com.wangwei.cameragl.R;
 import com.wangwei.cameragl.utils.GData;
 import com.wangwei.cameragl.view.CameraView;
 
-public class CameraVideoPreviewActivity extends AppCompatActivity {
+public class VideoPreviewMediaCodecActivity extends AppCompatActivity {
     private FrameLayout mContainer;
     public CameraView mCameraView;
 
@@ -27,10 +25,8 @@ public class CameraVideoPreviewActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        setContentView(R.layout.activity_cameravideopreview);
-        mContainer = findViewById(R.id.container_cv);
-
-        initQieHuanButton();
+        setContentView(R.layout.activity_videopreview_mediacodec);
+        mContainer = findViewById(R.id.container_vpm);
     }
 
     @Override
@@ -44,6 +40,7 @@ public class CameraVideoPreviewActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         if (mCameraView != null) {
             mCameraView.onResume();
         } else {
@@ -52,6 +49,9 @@ public class CameraVideoPreviewActivity extends AppCompatActivity {
     }
 
     private void startCamera() {
+        GData.setIsCamera(false);
+        GData.setIsMediaCodec(true);
+        
         if (mCameraView == null) {
             mCameraView = new CameraView(this);
             mContainer.addView(mCameraView,
@@ -59,23 +59,5 @@ public class CameraVideoPreviewActivity extends AppCompatActivity {
                             ViewGroup.LayoutParams.MATCH_PARENT));
         }
     }
-
-    private void initQieHuanButton() {
-        Button btn = findViewById(R.id.qiehuan);
-        btn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                GData.setIsCamera(!GData.getIsCamera());
-                GData.setIsMediaCodec(false);
-
-                if (GData.getIsCamera()) {
-                    btn.setText("切换到视频");
-                } else {
-                    btn.setText("切换到摄像头");
-                }
-                onPause();
-                onResume();
-            }
-        });
-    }
 }
+

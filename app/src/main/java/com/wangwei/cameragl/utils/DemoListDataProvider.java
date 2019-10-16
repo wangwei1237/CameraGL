@@ -4,6 +4,7 @@ import com.wangwei.cameragl.activity.CameraPreviewActivity;
 import com.wangwei.cameragl.activity.CameraVideoPreviewActivity;
 import com.wangwei.cameragl.activity.PreviewAndRecorderActivity;
 import com.wangwei.cameragl.activity.VideoPreviewActivity;
+import com.wangwei.cameragl.activity.VideoPreviewMediaCodecActivity;
 import com.wangwei.cameragl.model.DemoItem;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class DemoListDataProvider {
         arr.add(new DemoItem("OpenGL播放视频", "MediaPlayer", VideoPreviewActivity.class));
         arr.add(new DemoItem("OpenGL切换摄像头和视频", "MediaPlayer", CameraVideoPreviewActivity.class));
         arr.add(new DemoItem("OpenGL预览并录制", "包含录制功能", PreviewAndRecorderActivity.class));
+        arr.add(new DemoItem("预览视频", "mediacodec", VideoPreviewMediaCodecActivity.class));
 
         return arr;
     }

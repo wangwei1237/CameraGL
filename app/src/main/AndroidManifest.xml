@@ -37,6 +37,8 @@
 
         <activity android:name=".activity.PreviewAndRecorderActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
+        <activity android:name=".activity.VideoPreviewMediaCodecActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
     </application>
 
 </manifest>

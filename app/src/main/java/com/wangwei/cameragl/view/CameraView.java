@@ -12,8 +12,10 @@ import com.wangwei.cameragl.camera.CameraApi14;
 import com.wangwei.cameragl.camera.CameraSize;
 import com.wangwei.cameragl.camera.ICamera;
 import com.wangwei.cameragl.render.CameraDrawer;
+import com.wangwei.cameragl.utils.DecodeThread;
 import com.wangwei.cameragl.utils.GData;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
@@ -34,6 +36,7 @@ public class CameraView extends GLSurfaceView implements GLSurfaceView.Renderer 
     private MediaPlayer  mMediaPlayer;
     private Surface      mSurface;
     private int          mTakePhotoFromGL = 0;
+    private DecodeThread mDecodeThread;
 
     public CameraView(Context context) {
         super(context);
@@ -71,8 +74,14 @@ public class CameraView extends GLSurfaceView implements GLSurfaceView.Renderer 
         if (GData.getIsCamera()) {
             mCameraApi.setPreviewTexture(mCameraDrawer.getSurfaceTexture());
         } else {
-            mCameraApi.setPreviewTexture(null);
-            testVideo();
+            if (GData.getIsMediaCodec()) {
+                mCameraApi.setPreviewTexture(null);
+                testVideo2();
+            } else {
+                mCameraApi.setPreviewTexture(null);
+                testVideo();
+            }
+
         }
 
         //默认使用的GLThread.每次刷新的时候，都强制要求是刷新这个GLSurfaceView
@@ -161,6 +170,17 @@ public class CameraView extends GLSurfaceView implements GLSurfaceView.Renderer 
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void testVideo2() {
+        Log.d(TAG, "player video by meidacodec");
+        String filePath = "/sdcard/DCIM/Camera/video_20190909_172631.mp4";
+        File f = new File(filePath);
+        mDecodeThread = new DecodeThread(this);
+        mDecodeThread.sendSurface(mCameraDrawer.getSurfaceTexture());
+        mDecodeThread.sendSrcFile(f);
+        mDecodeThread.sendStart();
+
     }
 
     public void changeRecordingState(boolean recordingEnabled) {

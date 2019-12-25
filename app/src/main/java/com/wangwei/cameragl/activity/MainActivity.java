@@ -65,7 +65,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerArrayAdap
             }
         });
 
-        m_adapter.addAll(DemoListDataProvider.getDemoList());
+        ArrayList<DemoItem> demolist = DemoListDataProvider.getDemoList();
+        m_adapter.addAll(demolist);
 
         // 设置Item点击事件
         m_adapter.setOnItemClickListener(this);

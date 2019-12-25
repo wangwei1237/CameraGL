@@ -70,20 +70,6 @@ public class CameraView extends GLSurfaceView implements GLSurfaceView.Renderer 
         int previewSizeHeight  = previewSize.getHeight();
 
         mCameraDrawer.setPreviewSize(previewSizeWidth, previewSizeHeight);
-
-        if (GData.getIsCamera()) {
-            mCameraApi.setPreviewTexture(mCameraDrawer.getSurfaceTexture());
-        } else {
-            if (GData.getIsMediaCodec()) {
-                mCameraApi.setPreviewTexture(null);
-                testVideo2();
-            } else {
-                mCameraApi.setPreviewTexture(null);
-                testVideo();
-            }
-
-        }
-
         //默认使用的GLThread.每次刷新的时候，都强制要求是刷新这个GLSurfaceView
         mCameraDrawer.getSurfaceTexture().setOnFrameAvailableListener(new SurfaceTexture.OnFrameAvailableListener() {
             @Override
@@ -91,7 +77,20 @@ public class CameraView extends GLSurfaceView implements GLSurfaceView.Renderer 
                 requestRender();
             }
         });
-        mCameraApi.preview();
+
+        if (GData.getIsCamera()) {
+            mCameraApi.setPreviewTexture(mCameraDrawer.getSurfaceTexture());
+            mCameraApi.preview();
+        } else {
+            if (GData.getIsMediaCodec()) {
+                // mCameraApi.setPreviewTexture(null);
+                testVideo2();
+            } else {
+                // mCameraApi.setPreviewTexture(null);
+                testVideo();
+            }
+
+        }
     }
 
     @Override

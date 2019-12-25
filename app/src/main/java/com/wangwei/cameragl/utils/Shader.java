@@ -41,6 +41,10 @@ public class Shader {
         GLES20.glUniform1f(GLES20.glGetUniformLocation(ID, name), value);
     }
 
+    public void setInt(String name, int value) {
+        GLES20.glUniform1i(GLES20.glGetUniformLocation(ID, name), value);
+    }
+
     private int loadShader(int type, String sharderCode) {
         int sharder = GLES20.glCreateShader(type);
         GLES20.glShaderSource(sharder, sharderCode);

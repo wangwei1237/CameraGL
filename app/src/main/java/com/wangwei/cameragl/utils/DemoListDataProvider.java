@@ -12,6 +12,7 @@ import android.os.Build;
 import com.wangwei.cameragl.activity.CameraPreviewActivity;
 import com.wangwei.cameragl.activity.CameraVideoPreviewActivity;
 import com.wangwei.cameragl.activity.OpenGLSample01Activity;
+import com.wangwei.cameragl.activity.OpenGLTexture;
 import com.wangwei.cameragl.activity.PreviewAndRecorderActivity;
 import com.wangwei.cameragl.activity.VideoPreviewActivity;
 import com.wangwei.cameragl.activity.VideoPreviewMediaCodecActivity;
@@ -32,6 +33,7 @@ public class DemoListDataProvider {
         arr.add(new DemoItem("OpenGL预览并录制", "包含录制功能", PreviewAndRecorderActivity.class));
         arr.add(new DemoItem("预览视频", "mediacodec", VideoPreviewMediaCodecActivity.class));
         arr.add(new DemoItem("OpenGL01", "opengl demo", OpenGLSample01Activity.class));
+        arr.add(new DemoItem("texture", "texture", OpenGLTexture.class));
 
         return arr;
     }

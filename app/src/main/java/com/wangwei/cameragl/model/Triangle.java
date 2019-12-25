@@ -38,8 +38,8 @@ public class Triangle {
         mContext = context;
 
         mShader = new Shader(mContext.getResources(),
-                "shader/opengl_01_vertex.glsl",
-                "shader/opengl_01_fragment.glsl");
+                "shader/opengl_01_vertex.vert",
+                "shader/opengl_01_fragment.frag");
     }
 
     public void Draw() {

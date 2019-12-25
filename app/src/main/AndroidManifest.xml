@@ -48,8 +48,12 @@
         <activity
             android:name=".activity.VideoPreviewMediaCodecActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity android:name=".activity.OpenGLSample01Activity"
+        <activity
+            android:name=".activity.OpenGLSample01Activity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".activity.OpenGLTexture"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
     </application>
 
 </manifest>

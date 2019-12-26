@@ -13,6 +13,7 @@ import com.wangwei.cameragl.activity.CameraPreviewActivity;
 import com.wangwei.cameragl.activity.CameraVideoPreviewActivity;
 import com.wangwei.cameragl.activity.OpenGLSample01Activity;
 import com.wangwei.cameragl.activity.OpenGLTexture;
+import com.wangwei.cameragl.activity.OpenGLTexture02;
 import com.wangwei.cameragl.activity.PreviewAndRecorderActivity;
 import com.wangwei.cameragl.activity.VideoPreviewActivity;
 import com.wangwei.cameragl.activity.VideoPreviewMediaCodecActivity;
@@ -34,6 +35,7 @@ public class DemoListDataProvider {
         arr.add(new DemoItem("预览视频", "mediacodec", VideoPreviewMediaCodecActivity.class));
         arr.add(new DemoItem("OpenGL01", "opengl demo", OpenGLSample01Activity.class));
         arr.add(new DemoItem("texture", "texture", OpenGLTexture.class));
+        arr.add(new DemoItem("texture02", "texture02", OpenGLTexture02.class));
 
         return arr;
     }

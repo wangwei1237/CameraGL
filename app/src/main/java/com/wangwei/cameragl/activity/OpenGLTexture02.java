@@ -9,9 +9,10 @@ import android.widget.FrameLayout;
 
 import com.wangwei.cameragl.R;
 import com.wangwei.cameragl.model.Square;
+import com.wangwei.cameragl.model.Square2;
 import com.wangwei.cameragl.view.TextureGLSurfaceView;
 
-public class OpenGLTexture extends AppCompatActivity {
+public class OpenGLTexture02 extends AppCompatActivity {
 
     private TextureGLSurfaceView mGLSurfaceView;
     private FrameLayout mContainer;
@@ -19,10 +20,11 @@ public class OpenGLTexture extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_open_gltexture);
+        setContentView(R.layout.activity_open_gltexture02);
 
-        mContainer = findViewById(R.id.opengl_texture_view);
-        mGLSurfaceView = new TextureGLSurfaceView(this, new Square(this));
+        mContainer = findViewById(R.id.opengl_texture_view_02);
+
+        mGLSurfaceView = new TextureGLSurfaceView(this, new Square2(this));
         mContainer.addView(mGLSurfaceView, new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT

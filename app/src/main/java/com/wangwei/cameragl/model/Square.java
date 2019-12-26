@@ -41,6 +41,7 @@ public class Square {
     private int texture2;
     private long beginTime;
     private int durationTime = 1000; // 控制转场前后每张图片显示的时间.
+    private boolean isReRender = false; // 是否是重新渲染，重新渲染时需要做特殊控制.保证两张图片静止指定时间.
 
     public Square(Context context) {
         mVertexBuffer = ByteBuffer.allocateDirect(triangleCoords.length * 4)
@@ -99,17 +100,21 @@ public class Square {
         mShader.setInt("uTexture2", 1);
 
         long currentTime = System.currentTimeMillis();
-        if (currentTime - beginTime > durationTime) {
+
+
+        if (currentTime - beginTime > (isReRender ? 2 * durationTime : durationTime)) {
             i += 0.008;
-            if (i > 1.0f) {
+            if (i > 1.1f) {
                 beginTime = currentTime;
                 i = 0.0f;
-
+                isReRender = true;
+            } else {
+                isReRender = false;
             }
+        }
 
-            if (currentTime - beginTime > durationTime) {
-                mShader.setFloat("uMixEdge", i);
-            }
+        if (currentTime - beginTime > durationTime) {
+            mShader.setFloat("uMixEdge", i);
         }
 
         GLES20.glDrawElements(GLES20.GL_TRIANGLES, VERTEX_INDEX.length, GLES20.GL_UNSIGNED_SHORT, mVertexIndexBuffer);

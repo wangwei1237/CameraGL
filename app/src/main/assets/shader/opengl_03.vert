@@ -1,9 +1,10 @@
-layout (location=0) attribute vec3 vPosition;
-layout (location=1) attribute vec4 vColor;
-layout (location=2) attribute vec2 vTextureCoods;
+#version 300 es
+layout (location=0) in vec3 vPosition;
+layout (location=1) in vec4 vColor;
+layout (location=2) in vec2 vTextureCoods;
 
-varying vec4 ourColor;
-varying vec2 ourTextureCoods;
+out vec4 ourColor;
+out vec2 ourTextureCoods;
 
 void main() {
     gl_Position = vec4(vPosition, 1.0f);

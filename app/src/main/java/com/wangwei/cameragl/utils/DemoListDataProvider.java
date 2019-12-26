@@ -33,9 +33,9 @@ public class DemoListDataProvider {
         arr.add(new DemoItem("OpenGL切换摄像头和视频", "MediaPlayer", CameraVideoPreviewActivity.class));
         arr.add(new DemoItem("OpenGL预览并录制", "包含录制功能", PreviewAndRecorderActivity.class));
         arr.add(new DemoItem("预览视频", "mediacodec", VideoPreviewMediaCodecActivity.class));
-        arr.add(new DemoItem("OpenGL01", "opengl demo", OpenGLSample01Activity.class));
-        arr.add(new DemoItem("texture", "texture", OpenGLTexture.class));
-        arr.add(new DemoItem("texture02", "texture02", OpenGLTexture02.class));
+        arr.add(new DemoItem("图像渲染效果", "opengl demo", OpenGLSample01Activity.class));
+        arr.add(new DemoItem("平滑过渡转场效果", "opengl demo", OpenGLTexture.class));
+        arr.add(new DemoItem("像素块转场效果", "opengl demo", OpenGLTexture02.class));
 
         return arr;
     }

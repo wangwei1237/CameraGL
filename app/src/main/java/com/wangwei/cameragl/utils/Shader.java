@@ -1,7 +1,7 @@
 package com.wangwei.cameragl.utils;
 
 import android.content.res.Resources;
-import android.opengl.GLES20;
+import android.opengl.GLES30;
 import java.io.InputStream;
 
 public class Shader {
@@ -17,16 +17,16 @@ public class Shader {
         String vertexSharderString   = loadGLSLFromRes(res, vertexPath);
         String fragmentSharderString = loadGLSLFromRes(res, fragmentPath);
 
-        int    vertexSharder   = loadShader(GLES20.GL_VERTEX_SHADER, vertexSharderString);
-        int    fragmentSharder = loadShader(GLES20.GL_FRAGMENT_SHADER, fragmentSharderString);
+        int    vertexSharder   = loadShader(GLES30.GL_VERTEX_SHADER, vertexSharderString);
+        int    fragmentSharder = loadShader(GLES30.GL_FRAGMENT_SHADER, fragmentSharderString);
 
-        ID = GLES20.glCreateProgram();
-        GLES20.glAttachShader(ID, vertexSharder);
-        GLES20.glAttachShader(ID, fragmentSharder);
-        GLES20.glLinkProgram(ID);
+        ID = GLES30.glCreateProgram();
+        GLES30.glAttachShader(ID, vertexSharder);
+        GLES30.glAttachShader(ID, fragmentSharder);
+        GLES30.glLinkProgram(ID);
 
-        GLES20.glDeleteShader(vertexSharder);
-        GLES20.glDeleteShader(fragmentSharder);
+        GLES30.glDeleteShader(vertexSharder);
+        GLES30.glDeleteShader(fragmentSharder);
     }
 
     public int getID() {
@@ -34,21 +34,21 @@ public class Shader {
     }
 
     public void use() {
-        GLES20.glUseProgram(ID);
+        GLES30.glUseProgram(ID);
     }
 
     public void setFloat(String name, float value) {
-        GLES20.glUniform1f(GLES20.glGetUniformLocation(ID, name), value);
+        GLES30.glUniform1f(GLES30.glGetUniformLocation(ID, name), value);
     }
 
     public void setInt(String name, int value) {
-        GLES20.glUniform1i(GLES20.glGetUniformLocation(ID, name), value);
+        GLES30.glUniform1i(GLES30.glGetUniformLocation(ID, name), value);
     }
 
     private int loadShader(int type, String sharderCode) {
-        int sharder = GLES20.glCreateShader(type);
-        GLES20.glShaderSource(sharder, sharderCode);
-        GLES20.glCompileShader(sharder);
+        int sharder = GLES30.glCreateShader(type);
+        GLES30.glShaderSource(sharder, sharderCode);
+        GLES30.glCompileShader(sharder);
 
         return sharder;
     }

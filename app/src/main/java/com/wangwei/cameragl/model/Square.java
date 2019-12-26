@@ -1,7 +1,7 @@
 package com.wangwei.cameragl.model;
 
 import android.content.Context;
-import android.opengl.GLES20;
+import android.opengl.GLES30;
 import com.wangwei.cameragl.R;
 import com.wangwei.cameragl.utils.Shader;
 import com.wangwei.cameragl.utils.TextureUtils;
@@ -74,31 +74,31 @@ public class Square implements IDrawable {
     public void draw() {
         mShader.use();
         mVertexBuffer.position(0);
-        mPositionHandle = GLES20.glGetAttribLocation(mShader.getID(), "vPosition");
-        GLES20.glVertexAttribPointer(mPositionHandle, 3,
-                GLES20.GL_FLOAT, false,
+        mPositionHandle = GLES30.glGetAttribLocation(mShader.getID(), "vPosition");
+        GLES30.glVertexAttribPointer(mPositionHandle, 3,
+                GLES30.GL_FLOAT, false,
                 vertexStride, mVertexBuffer);
-        GLES20.glEnableVertexAttribArray(mPositionHandle);
+        GLES30.glEnableVertexAttribArray(mPositionHandle);
 
         mVertexBuffer.position(3);
-        mColorHandle = GLES20.glGetAttribLocation(mShader.getID(), "vColor");
-        GLES20.glVertexAttribPointer(mColorHandle, 4,
-                GLES20.GL_FLOAT, false,
+        mColorHandle = GLES30.glGetAttribLocation(mShader.getID(), "vColor");
+        GLES30.glVertexAttribPointer(mColorHandle, 4,
+                GLES30.GL_FLOAT, false,
                 vertexStride, mVertexBuffer);
-        GLES20.glEnableVertexAttribArray(mColorHandle);
+        GLES30.glEnableVertexAttribArray(mColorHandle);
 
         mVertexBuffer.position(7);
-        mTextureCoods = GLES20.glGetAttribLocation(mShader.getID(), "vTextureCoods");
-        GLES20.glVertexAttribPointer(mTextureCoods, 2,
-                GLES20.GL_FLOAT, false,
+        mTextureCoods = GLES30.glGetAttribLocation(mShader.getID(), "vTextureCoods");
+        GLES30.glVertexAttribPointer(mTextureCoods, 2,
+                GLES30.GL_FLOAT, false,
                 vertexStride, mVertexBuffer);
-        GLES20.glEnableVertexAttribArray(mTextureCoods);
+        GLES30.glEnableVertexAttribArray(mTextureCoods);
 
-        GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
-        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, texture1);
+        GLES30.glActiveTexture(GLES30.GL_TEXTURE0);
+        GLES30.glBindTexture(GLES30.GL_TEXTURE_2D, texture1);
 
-        GLES20.glActiveTexture(GLES20.GL_TEXTURE1);
-        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, texture2);
+        GLES30.glActiveTexture(GLES30.GL_TEXTURE1);
+        GLES30.glBindTexture(GLES30.GL_TEXTURE_2D, texture2);
 
         mShader.setInt("uTexture1", 0);
         mShader.setInt("uTexture2", 1);
@@ -120,9 +120,9 @@ public class Square implements IDrawable {
             mShader.setFloat("uMixEdge", i);
         }
 
-        GLES20.glDrawElements(GLES20.GL_TRIANGLES, VERTEX_INDEX.length, GLES20.GL_UNSIGNED_SHORT, mVertexIndexBuffer);
-        GLES20.glDisableVertexAttribArray(mPositionHandle);
-        GLES20.glDisableVertexAttribArray(mColorHandle);
-        GLES20.glDisableVertexAttribArray(mTextureCoods);
+        GLES30.glDrawElements(GLES30.GL_TRIANGLES, VERTEX_INDEX.length, GLES30.GL_UNSIGNED_SHORT, mVertexIndexBuffer);
+        GLES30.glDisableVertexAttribArray(mPositionHandle);
+        GLES30.glDisableVertexAttribArray(mColorHandle);
+        GLES30.glDisableVertexAttribArray(mTextureCoods);
     }
 }

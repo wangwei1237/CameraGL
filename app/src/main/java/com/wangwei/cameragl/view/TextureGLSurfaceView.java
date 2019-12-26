@@ -1,7 +1,7 @@
 package com.wangwei.cameragl.view;
 
 import android.content.Context;
-import android.opengl.GLES20;
+import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 import com.wangwei.cameragl.model.IDrawable;
 import javax.microedition.khronos.egl.EGLConfig;
@@ -22,18 +22,18 @@ public class TextureGLSurfaceView extends GLSurfaceView implements GLSurfaceView
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        GLES30.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         mDrawable.preDraw();
     }
 
     @Override
     public void onDrawFrame(GL10 gl) {
-        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
+        GLES30.glClear(GLES30.GL_COLOR_BUFFER_BIT);
         mDrawable.draw();
     }
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
-        GLES20.glViewport(0, 0, width, height);
+        GLES30.glViewport(0, 0, width, height);
     }
 }

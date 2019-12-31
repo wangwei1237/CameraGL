@@ -57,6 +57,9 @@
         <activity
             android:name=".activity.OpenGLTexture02"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".activity.OpenGLTexture03"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
     </application>
 
 </manifest>

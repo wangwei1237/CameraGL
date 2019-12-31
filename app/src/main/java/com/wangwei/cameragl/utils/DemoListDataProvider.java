@@ -8,12 +8,14 @@ import android.net.wifi.ScanResult;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
+import android.os.DeadObjectException;
 
 import com.wangwei.cameragl.activity.CameraPreviewActivity;
 import com.wangwei.cameragl.activity.CameraVideoPreviewActivity;
 import com.wangwei.cameragl.activity.OpenGLSample01Activity;
 import com.wangwei.cameragl.activity.OpenGLTexture;
 import com.wangwei.cameragl.activity.OpenGLTexture02;
+import com.wangwei.cameragl.activity.OpenGLTexture03;
 import com.wangwei.cameragl.activity.PreviewAndRecorderActivity;
 import com.wangwei.cameragl.activity.VideoPreviewActivity;
 import com.wangwei.cameragl.activity.VideoPreviewMediaCodecActivity;
@@ -36,6 +38,7 @@ public class DemoListDataProvider {
         arr.add(new DemoItem("图像渲染效果", "opengl demo", OpenGLSample01Activity.class));
         arr.add(new DemoItem("平滑过渡转场效果", "opengl demo", OpenGLTexture.class));
         arr.add(new DemoItem("像素块转场效果", "opengl demo", OpenGLTexture02.class));
+        arr.add(new DemoItem("水波转场效果", "opengl demo", OpenGLTexture03.class));
 
         return arr;
     }
